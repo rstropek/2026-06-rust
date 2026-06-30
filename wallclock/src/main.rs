@@ -61,12 +61,18 @@ fn main() {
     print_clock(&my_clock);
 
     // A human is setting the clock. We copy the clock time from the uninitialized state to the initialized state.
+    /*
     match my_clock {
         WallClock::Uninitialized(state) => {
             my_clock = WallClock::Initialized(state);
         }
         _ => { /* Print some error */}
     }
+    */
+    if let WallClock::Uninitialized(state) = my_clock {
+        my_clock = WallClock::Initialized(state);
+    }
+
     print_clock(&my_clock);
 } 
 
